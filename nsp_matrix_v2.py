@@ -3,7 +3,7 @@ import pandas as pd
 
 import random
 
-def generate_random_nurse_availability(num_nurses, num_days, min_availability_percentage=0.7, max_consecutive_shifts=2):
+def generate_random_nurse_availability(num_nurses, num_days, max_consecutive_shifts=2, min_availability_percentage=0.66):
     nurse_availability = []
 
     for _ in range(num_nurses):
@@ -33,7 +33,9 @@ def main():
     min_rest_time = 1
 
     # generate random nurse availability matrix
-    nurse_availability = generate_random_nurse_availability(num_nurses, num_days)
+    # generate_random_nurse_availability's min_availability_percentage parameter is auto-set
+    #   pass in a fourth parameter to override
+    nurse_availability = generate_random_nurse_availability(num_nurses, num_days, max_consecutive_shifts)
 
     print("Nurse Availability Matrix:")
     for row in nurse_availability:
